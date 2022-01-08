@@ -1,0 +1,21 @@
+from itertools import permutations
+
+
+def swap(n):
+    zero = ''
+    number = ''
+    for i in range(n+1):
+        if i != n:
+            zero += '0'
+        if i != 0:
+            number += str(i)
+    data = permutations(zero + number)
+    print(*data)
+    fale = open('total.txt', 'w+')
+    for i in data:
+        fale.write(*i)
+    fale.close()
+    print('Strings - ', len(*data))
+
+
+swap(7)
