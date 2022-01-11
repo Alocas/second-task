@@ -17,12 +17,34 @@ def swap(n):
         if i != 0:
             number += str(i)
 
-    f = open('res.txt', 'w+')
-    for i in permutation(zero + number):
-        f.write(i + '\n')
-        k += 1
+    mass = []
 
-    f.close()
+    for i in permutation(zero + number):
+        mass.append(i)
+    file = open('result.txt', 'w+')
+    flag = 1
+    while flag == 1:
+        for i in range(len(mass)):
+            a = mass.count(mass[i])
+            while a > 1:
+                del mass[i]
+                a -= 1
+                mass.append('')
+            else:
+                flag = 0
+    flag2 = 1
+    while flag2 == 1:
+        for i in range(len(mass)):
+            for g in range(len(mass)):
+                if mass[i] == mass[g]:
+                    del mass[g]
+                    mass.append('')
+                else:
+                    flag2 = 0
+    for i in range(len(mass)):
+        if mass[i] != '':
+            file.write(str(mass[i]) + '\n')
+            k += 1
     print('Strings - ', k)
 
 
